@@ -132,12 +132,10 @@ var CoursesView = Backbone.View.extend({   //课时list view
         this.render();
     },
     render: function () {
-        console.log('courseView renderd');
         this.$el.html(this.template({"courseBtns":this.collection.models,'disabled':this.model.get('disabled')}));
         return this;
     },
     changeBtnStatus:function(){
-        console.log('changeBtnStatus 1 called');
         var self = this;
         var fns = this.model.get('disabled') ? [$.prototype['attr'], $.prototype['removeClass']] : [$.prototype['removeAttr'], $.prototype['addClass']];
         var btns = this.$el.find('button');
@@ -170,12 +168,10 @@ var UnlimitedKitsView = Backbone.View.extend({   //包月list view
         this.render();
     },
     render: function () {
-        console.log('kits view render');
         this.$el.html(this.template({"kitBtns":this.collection.models,'disabled':this.model.get('disabled')}));
         return this;
     },
     changeBtnStatus:function(){
-        console.log('changeBtnStatus 2 called');
         var self = this;
         var fns = this.model.get('disabled') ? [$.prototype['attr'], $.prototype['removeClass']] : [$.prototype['removeAttr'], $.prototype['addClass']];
         var btns = this.$el.find('button');
@@ -201,7 +197,6 @@ var GoodsView = Backbone.View.extend({
         'click .kitTab': 'changeGoodsList'
     },
     initialize: function () {
-        console.log('coursesview and kits view get inited');
         this.currentTab = "course";
         this.coursesView = new CoursesView({collection: this.collection.courses,model:this.model});
         this.kitsView = new UnlimitedKitsView({collection: this.collection.kits,model:this.model});
